@@ -1,7 +1,7 @@
 from textblob import TextBlob
-from langdetect import detect
 
 text = input('Введите текст: ')
+text_blob = TextBlob(text)
 
 
 def number_sentences(t):
@@ -37,11 +37,22 @@ def average_indicators(sentences, words, syllables):
 sent1 = number_sentences(text)
 words1 = number_words(text)
 syllables1 = number_syllables(text)
-asl1, asw2 = average_indicators(sent1, words1, syllables1)
+asl1, asw1 = average_indicators(sent1, words1, syllables1)
 
 print('Предложений:', sent1)
 print('Слов:', words1)
 print('Слогов:', syllables1)
 print('Средняя длина предложения в словах:', asl1)
-print('Средняя длина слова в слогах:', asw2)
+print('Средняя длина слова в слогах:', asw1)
 
+
+def flash(text1, asl2, asw2):
+    fre = -1
+    if text1.detect_language() == 'ru':
+        fre = 206.835 - (1.3 * asl2) - (60.1 * asw2)
+    elif text1.detect_language() == 'en':
+        fre = 206.835 - 1.015 * asl2 - 84.6 * asw2
+    return fre
+
+
+print('Индекс удобочитаемости Флеша:', flash(text_blob, asl1, asw1))
