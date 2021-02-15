@@ -1,5 +1,13 @@
-from textblob import TextBlob
+"""
+Case-study #4
+Developers:
+# Case-study #3
+# Developers: Marinkin O. (27%),
+# Seledtsov A. (25%),
+# Evdischenko M. (85%).
+"""
 
+from textblob import TextBlob
 
 text = input('Введите текст: ')
 text_blob = TextBlob(text)
