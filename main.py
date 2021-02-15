@@ -55,4 +55,30 @@ def flash(text1, asl2, asw2):
     return fre
 
 
-print('Индекс удобочитаемости Флеша:', flash(text_blob, asl1, asw1))
+fre1 = flash(text_blob, asl1, asw1)
+print('Индекс удобочитаемости Флеша:', fre1)
+
+
+def flash_detect(textt, fre2):
+    if textt.detect_language() == 'ru':
+        if fre1 > 80:
+            print('Текст очень легко читается (для младших школьников).')
+        elif fre1 > 50:
+            print('Простой текст (для школьников).')
+        elif fre1 > 25:
+            print('Текст немного трудно читать (для студентов).')
+        elif fre1 <= 25:
+            print('Текст трудно читается (для выпускников ВУЗов).')
+    elif textt.detect_language() == 'en':
+        if fre1 >= 100:
+            print('Очень легко читается.')
+        elif fre1 >= 65:
+            print('Простой английский язык.')
+        elif fre1 >= 30:
+            print('Немного трудно читать.')
+        elif fre1 < 30:
+            print('Очень трудно читать. ')
+
+
+flash_detect(text_blob, fre1)
+
