@@ -103,4 +103,3 @@ flash_detect(fre1)
 polarit, objectiv = analysis(text_blob)
 print('Тональность текста:', polarit)
 print('Объективность: ', objectiv, '%', sep=' ')
-
